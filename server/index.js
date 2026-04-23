@@ -2,13 +2,20 @@ const express = require('express')
 
 const app = express()
 
+const path = require('path')
+
 const db = require('./queries')
 
 const PORT = 9001
 
+// Middleware
+
+// host react app as static files
+app.use(express.static(path.resolve(__dirname, '../client/build')))
+
 // Routes
 app.get('/', (req, res) => {
-    res.send("Helloooo from the server!")
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'))
 })
 
 // CRUD
