@@ -9,3 +9,26 @@ const pool = new POOL({
     password: 'password',
     port: 5432
 })
+
+// Create all the functions that will be our request handlers in our Express server
+
+// Create a new link in the db
+
+// Read all the data from db
+
+const getLinks = (req, res) => {
+    pool.query('SELECT * FROM links ORDER BY id ASC', (error, result) => {
+        if (error) {
+            throw error;
+        }
+        res.status(200).json(result.rows)
+    })
+}
+
+// Update link in the db
+
+// Delete link in the db
+
+module.exports = {
+    getLinks,
+}
